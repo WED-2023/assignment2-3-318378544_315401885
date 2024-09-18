@@ -4,11 +4,23 @@ const MySql = require("../routes/utils/MySql");
 const DButils = require("../routes/utils/DButils");
 const bcrypt = require("bcrypt");
 
-router.post("/Register", async (req, res, next) => {
+/**
+ * Registers a new user in the system.
+ * 
+ * @param username - The username of the user (3-8 characters, letters/numbers).
+ * @param firstname - The first name of the user.
+ * @param lastname - The last name of the user.
+ * @param country - The country of the user.
+ * @param password - The password of the user (5-10 characters, must include at least one number and one special character).
+ * @param confirmedPassword - The confirmed password for validation.
+ * @param email - The email address of the user.
+ * @param [profilePic=null] - Optional profile picture URL.
+ * 
+ * @throws Will throw an error if validation fails or if the username is already taken.
+ */
+
+router.post("/register", async (req, res, next) => {
   try {
-    // parameters exists
-    // valid parameters
-    // username exists
     let user_details = {
       username: req.body.username,
       firstname: req.body.firstname,
@@ -19,8 +31,13 @@ router.post("/Register", async (req, res, next) => {
       profilePic: req.body.profilePic || null
     }
 
+    // Validate required fields
+    if (!user_details.username || !user_details.firstname || !user_details.lastname || !user_details.country || !user_details.password || !user_details.email) {
+      throw { status: 400, message: "All fields are required" };
+    }
+
     // Check if passwords match
-    if (user_details.password !== req.body.password_confirmation) {
+    if (user_details.password !== req.body.confirmedPassword) {
       throw { status: 400, message: "Passwords do not match" };
     }
 
@@ -66,43 +83,47 @@ router.post("/Register", async (req, res, next) => {
   }
 });
 
-router.post("/Login", async (req, res, next) => {
+/**
+ * Logs in a user by checking username and password.
+ * 
+ * @param username - The username of the user.
+ * @param password - The password of the user.
+ * 
+ * @returns - The user_id of the logged-in user.
+ * 
+ * @throws Will throw an error if the username or password is incorrect.
+ */
+
+router.post("/login", async (req, res, next) => {
   try {
-     // Ensure username and password are provided
-     if (!req.body.username || !req.body.password) {
-      throw { status: 400, message: "Username and Password required" };
-    }
-    
-    // Check if username exists
-    const users = await DButils.execQuery("SELECT * FROM users WHERE username = ?", [req.body.username]);
-    if (users.length === 0) {
-      throw { status: 401, message: "Username or Password incorrect" };
-    }
+    const { username, password } = req.body;
 
-    // check that the password is correct
-    const user = (
-      await DButils.execQuery(
-        `SELECT * FROM users WHERE username = '${req.body.username}'`
-      )
-    )[0];
-
-    if (!bcrypt.compareSync(req.body.password, user.password)) {
-      throw { status: 401, message: "Username or Password incorrect" };
+    // Validate required fields
+    if (!username || !password) {
+      return res.status(400).send("Username and password are required");
+    }
+    // Check if the user exists and Check if the password is correct
+    const users = await DButils.execQuery("SELECT * FROM users WHERE username = ?", [username]);
+    if (users.length === 0 || !bcrypt.compareSync(password, users[0].password)) {
+      return res.status(401).send("Username or Password incorrect");
     }
 
-    // Set cookie
-    req.session.user_id = user.user_id;
-
-
-    // return cookie
-    res.status(200).send({ message: "login succeeded", success: true });
+    // Return user_id upon successful login
+    const userId = users[0].id;
+    res.status(200).send({ message: "login succeeded", user_id: userId });
   } catch (error) {
     next(error);
   }
 });
 
+
+
+/**
+ * Logs out the current user and resets the session.
+ */
+
 router.post("/Logout", function (req, res) {
-  req.session.reset(); // reset the session info --> send cookie when  req.session == undefined!!
+  req.session.reset(); // Reset the session
   res.send({ success: true, message: "logout succeeded" });
 });
 
