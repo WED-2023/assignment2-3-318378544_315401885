@@ -1,53 +1,36 @@
-var mysql = require('mysql');
+var mysql = require('mysql2/promise');
 require("dotenv").config();
 
-
-const config={
-connectionLimit:4,
-  host: process.env.host,//"localhost"
-  user: process.env.user,//"root"
-  password: "pass_root@123",
-  database:"mydb"
-}
-const pool = new mysql.createPool(config);
-
-const connection =  () => {
-  return new Promise((resolve, reject) => {
-  pool.getConnection((err, connection) => {
-    if (err) reject(err);
-    console.log("MySQL pool connected: threadId " + connection.threadId);
-    const query = (sql, binding) => {
-      return new Promise((resolve, reject) => {
-         connection.query(sql, binding, (err, result) => {
-           if (err) reject(err);
-           resolve(result);
-           });
-         });
-       };
-       const release = () => {
-         return new Promise((resolve, reject) => {
-           if (err) reject(err);
-           console.log("MySQL pool released: threadId " + connection.threadId);
-           resolve(connection.release());
-         });
-       };
-       resolve({ query, release });
-     });
-   });
- };
-const query = (sql, binding) => {
-  return new Promise((resolve, reject) => {
-    pool.query(sql, binding, (err, result, fields) => {
-      if (err) reject(err);
-      resolve(result);
-    });
-  });
+const config = {
+  connectionLimit: 4,
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database
 };
+
+const pool = mysql.createPool(config);
+
+const connection = async () => {
+  try {
+    const connection = await pool.getConnection();
+    //console.log("MySQL pool connected: threadId " + connection.threadId);
+    const query = (sql, binding) => {
+      return connection.query(sql, binding);
+    };
+    const release = () => {
+      connection.release();
+      //console.log("MySQL pool released: threadId " + connection.threadId);
+    };
+    return { query, release };
+  } catch (err) {
+    console.error("MySQL connection error: ", err);
+    throw err;
+  }
+};
+
+const query = (sql, binding) => {
+  return pool.query(sql, binding);
+};
+
 module.exports = { pool, connection, query };
-
-
-
-
-
-
-

@@ -1,0 +1,148 @@
+[
+    {
+      "id": 1,
+      "name": "Monica's Thanksgiving Turkey",
+      "character": "Monica Geller",
+      "occasion": "Thanksgiving",
+      "image": "https://deadline.com/wp-content/uploads/2020/11/MonicaFriends.jpeg",
+      "ingredients": [
+        "1 whole turkey",
+        "Salt and pepper to taste",
+        "1/2 cup butter, melted",
+        "1 onion, chopped",
+        "1 carrot, chopped",
+        "1 stalk celery, chopped",
+        "1 cup chicken broth"
+      ],
+      "instructions": [
+        "Preheat oven to 325°F (165°C).",
+        "Season the turkey with salt and pepper inside and out.",
+        "Brush the turkey with melted butter.",
+        "Place onion, carrot, and celery inside the turkey cavity.",
+        "Place the turkey on a roasting rack in a roasting pan.",
+        "Pour chicken broth into the pan.",
+        "Roast the turkey for about 3 hours, or until the internal temperature reaches 165°F (75°C).",
+        "Let the turkey rest for 20 minutes before carving."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chandler's Cheesecake",
+      "character": "Chandler Bing",
+      "occasion": "Special Treat",
+      "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqjXWKAbUyCkUEggNlQf_sQJW3Ib9S1q6s9g&s",
+      "ingredients": [
+        "2 cups graham cracker crumbs",
+        "1/2 cup melted butter",
+        "4 packages (8 ounces each) cream cheese, softened",
+        "1 cup granulated sugar",
+        "1 teaspoon vanilla extract",
+        "4 large eggs",
+        "1 cup sour cream",
+        "1/4 cup all-purpose flour"
+      ],
+      "instructions": [
+        "Preheat oven to 325°F (165°C).",
+        "Mix graham cracker crumbs and melted butter; press onto bottom of 9-inch springform pan.",
+        "Beat cream cheese, sugar, and vanilla with mixer until blended. Add eggs, 1 at a time, mixing on low speed after each just until blended. Add sour cream and flour; mix well.",
+        "Pour over crust.",
+        "Bake 55 minutes or until center is almost set. Run knife around rim of pan to loosen cake; cool before removing rim.",
+        "Refrigerate cheesecake 4 hours."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Rachel's Trifle",
+      "character": "Rachel Green",
+      "occasion": "Dessert",
+      "image":"https://pyxis.nymag.com/v1/imgs/59e/3bc/3564ff52fb45976183eafb0a845c202bf7-16-friends-rachel-trifle.rsquare.w400.jpg",
+      "ingredients": [
+        "1 package of ladyfingers",
+        "1/2 cup sherry",
+        "1 cup raspberry jam",
+        "1 cup custard",
+        "1 cup whipped cream",
+        "1 cup sliced bananas",
+        "1 cup strawberries"
+      ],
+      "instructions": [
+        "Layer the ladyfingers in a trifle dish.",
+        "Sprinkle sherry over the ladyfingers.",
+        "Spread raspberry jam over the ladyfingers.",
+        "Layer custard on top of the jam.",
+        "Add sliced bananas and strawberries.",
+        "Top with whipped cream.",
+        "Refrigerate for at least 2 hours before serving."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Joey's Meatball Sub",
+      "character": "Joey Tribbiani",
+      "occasion": "Lunch",
+      "image":"https://people.com/thmb/4sPChlIOS5rQ503ZtrBttR-4q0s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(639x0:641x2)/joey-meatball-sub-4b4e13ee8ebd4c54af2d7c64d1149b95.jpg",
+      "ingredients": [
+        "1 sub roll",
+        "4 meatballs",
+        "1 cup marinara sauce",
+        "1/2 cup mozzarella cheese, shredded"
+      ],
+      "instructions": [
+        "Preheat oven to 375°F (190°C).",
+        "Place meatballs in a sub roll.",
+        "Pour marinara sauce over the meatballs.",
+        "Sprinkle with mozzarella cheese.",
+        "Bake for 10-15 minutes, or until the cheese is melted and bubbly."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Phoebe's Grandma's Cookies",
+      "character": "Phoebe Buffay",
+      "occasion": "Family Gathering",
+      "image":"https://i.redd.it/tiqli3cjom5a1.jpg",
+      "ingredients": [
+        "1 cup butter, softened",
+        "1 cup white sugar",
+        "1 cup brown sugar",
+        "2 eggs",
+        "1 tsp vanilla extract",
+        "2 cups all-purpose flour",
+        "1 tsp baking soda",
+        "1/2 tsp salt",
+        "2 cups semisweet chocolate chips"
+      ],
+      "instructions": [
+        "Preheat oven to 350°F (175°C).",
+        "Cream together butter and sugars until smooth.",
+        "Beat in eggs one at a time, then stir in vanilla.",
+        "Combine flour, baking soda, and salt; gradually blend into the butter mixture.",
+        "Stir in chocolate chips.",
+        "Drop by spoonfuls onto ungreased cookie sheets.",
+        "Bake for 8-10 minutes, or until edges are nicely browned."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Ross's Moist Maker Sandwich",
+      "character": "Ross Geller",
+      "occasion": "Post-Thanksgiving",
+      "image":"https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/05/15/14/mysandwich.jpg?width=1200&height=1200&fit=crop",
+      "ingredients": [
+        "3 slices of bread",
+        "Leftover turkey",
+        "Leftover stuffing",
+        "Leftover cranberry sauce",
+        "Leftover gravy"
+      ],
+      "instructions": [
+        "Heat leftover turkey, stuffing, and gravy.",
+        "Layer one slice of bread with turkey and stuffing.",
+        "Top with a second slice of bread spread with cranberry sauce.",
+        "Add another layer of turkey and stuffing.",
+        "Top with the third slice of bread.",
+        "Pour leftover gravy over the top of the sandwich before serving."
+      ]
+    }
+  ]
+  
